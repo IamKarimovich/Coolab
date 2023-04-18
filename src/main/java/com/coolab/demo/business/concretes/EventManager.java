@@ -23,7 +23,8 @@ public class EventManager implements EventService {
         return eventRepository.findAll();
     }
 
-
-
-
+    @Override
+    public void addEvent(Events event) {
+        eventRepository.save(event);
+    }
 }

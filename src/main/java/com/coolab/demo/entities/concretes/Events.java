@@ -23,6 +23,9 @@ public class Events {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "event_type")
+    private String eventType;
+
     @Column(name = "image")
     private byte[] image;
 

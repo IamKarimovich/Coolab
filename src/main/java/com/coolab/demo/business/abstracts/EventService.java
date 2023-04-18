@@ -8,4 +8,6 @@ public interface EventService {
 
     List<Events> getEvents();
 
+    void addEvent(Events event);
+
 }
