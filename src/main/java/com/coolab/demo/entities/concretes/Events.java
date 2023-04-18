@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "Events")
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Events {
     @Id
     @Column(name = "id")
@@ -21,5 +22,8 @@ public class Events {
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "image")
+    private byte[] image;
 
 }
