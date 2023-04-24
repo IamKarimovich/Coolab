@@ -1,10 +1,10 @@
 package com.coolab.demo.core.utilities;
 
-
-
 import java.io.ByteArrayOutputStream;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
+
+
 
 public class EventImageUtil {
 
@@ -44,5 +44,7 @@ public class EventImageUtil {
         }
         return outputStream.toByteArray();
     }
+
+
 
 }
