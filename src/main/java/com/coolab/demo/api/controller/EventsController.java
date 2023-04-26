@@ -28,14 +28,14 @@ public class EventsController {
         this.eventService = eventService;
     }
 
-    @GetMapping()
+    @GetMapping("getevents")
     public List<GetAllEventsResponse> getAllEvents()
     {
         return eventService.getEvents();
     }
 
-    @PostMapping
-    @ResponseStatus(code = HttpStatus.OK)
+    @PostMapping()
+    @ResponseStatus(code = HttpStatus.CREATED)
     public void addEvent(
             @RequestBody CreateEventRequest eventRequest
                          ) throws IOException {
@@ -43,7 +43,7 @@ public class EventsController {
         eventService.addEvent(eventRequest);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("getimage/{id}")
     public ResponseEntity<byte[]> getImage(@PathVariable int id) {
         byte[] image = eventService.getImage(id);
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
@@ -56,5 +56,10 @@ public class EventsController {
         eventService.updateImage(updateEventRequest);
     }
 
+    @GetMapping("getentity/{id}")
+    public GetAllEventsResponse getEvent(@PathVariable int id)
+    {
+        return eventService.getEvent(id);
+    }
 
 }

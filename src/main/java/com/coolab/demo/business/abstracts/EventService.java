@@ -24,5 +24,6 @@ public interface EventService {
 
     void updateImage(UpdateEventRequest updateEventRequest) throws IOException;
 
+    GetAllEventsResponse getEvent(int id);
 
 }
