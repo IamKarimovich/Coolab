@@ -26,4 +26,8 @@ public interface EventService {
 
     GetAllEventsResponse getEvent(int id);
 
+    void deleteEvent(int id);
+
+
+
 }

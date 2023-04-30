@@ -1,11 +1,14 @@
 package com.coolab.demo.entities.concretes;
 
 
+import com.coolab.demo.common.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "users")
 @Entity
@@ -19,20 +22,19 @@ public class User {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "f_name")
-    private String FName;
-    @Column(name = "l_name")
-    private String LName;
+    @Column(name = "f_name",nullable = false)
+    private String name;
+    @Column(name = "l_name",nullable = false)
+    private String surname;
 
-    @Column(name = "email")
+    @Column(name = "email",unique = true,nullable = false)
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "password",nullable = false)
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @Column(name = "user_role")
+    private UserType role;
 
 
 

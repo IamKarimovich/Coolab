@@ -5,24 +5,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Table(name = "roles")
+@Table(name = "user_role")
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Role {
+public class UserRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "user_id")
+    private int userId;
 
-
+    @Column(name = "role_id")
+    private int roleId;
 
 
 }

@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ public class EventsController {
     @PostMapping()
     @ResponseStatus(code = HttpStatus.CREATED)
     public void addEvent(
-            @RequestBody CreateEventRequest eventRequest
+            @RequestBody @Valid CreateEventRequest eventRequest
                          ) throws IOException {
         System.out.println("Error");
         eventService.addEvent(eventRequest);
@@ -52,7 +53,7 @@ public class EventsController {
 
     @PutMapping()
     @ResponseStatus(value = HttpStatus.OK)
-    public void updateImage(@RequestBody UpdateEventRequest updateEventRequest) throws IOException {
+    public void updateImage(@RequestBody @Valid UpdateEventRequest updateEventRequest) throws IOException {
         eventService.updateImage(updateEventRequest);
     }
 
@@ -61,5 +62,12 @@ public class EventsController {
     {
         return eventService.getEvent(id);
     }
+
+    @DeleteMapping("delete/{id}")
+    public void deleteUser(@PathVariable int id)
+    {
+        eventService.deleteEvent(id);
+    }
+
 
 }

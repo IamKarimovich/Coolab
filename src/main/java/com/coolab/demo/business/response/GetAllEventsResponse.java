@@ -29,7 +29,7 @@ public class GetAllEventsResponse {
 
     private String link;
 
-    private StatusType status;
+//    private StatusType status;
 
 //    private byte[] image;
 

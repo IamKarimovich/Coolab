@@ -1,4 +1,4 @@
-package com.coolab.demo.business.requests;
+package com.coolab.demo.business.response;
 
 import com.coolab.demo.common.EventTypeEnum;
 import com.coolab.demo.common.StatusType;
@@ -7,41 +7,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class UpdateEventRequest {
+public class GetByIdResponse {
 
 
-    private int id;
-
-    @NotNull
-    @NotBlank
-    @Size(min = 5)
-    private String name;
-
-    @NotNull
-    @NotBlank
-    @Size(min = 5)
     private String description;
 
-    @NotNull
-    @NotBlank
     private EventTypeEnum eventType;
 
     private MultipartFile image;
-
-
 
     private String date;
 
     private String link;
 
     private StatusType status;
-
 
 }
