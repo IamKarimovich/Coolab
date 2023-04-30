@@ -24,32 +24,32 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping()
+    @GetMapping("getuser/list")
     public List<GetAllUsersResponse> getUsersList()
     {
         return userService.getUsers();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("getuser/{id}")
     public GetByIdResponse getUserById(@PathVariable int id)
     {
         return userService.getUserById(id);
     }
 
-    @PostMapping()
+    @PostMapping("createuser")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void createUser(@Valid @RequestBody CreateUserRequest userRequest)
     {
         userService.createUser(userRequest);
     }
 
-    @GetMapping
+    @GetMapping("login")
     public GetAllUsersResponse loginUser(@Valid @RequestBody LoginUserRequest loginUserRequest)
     {
         return userService.loginUser(loginUserRequest);
     }
 
-    @PutMapping()
+    @PutMapping("update")
     public void updateUser(@RequestBody @Valid UpdateUserRequest userRequest)
     {
         userService.updateUser(userRequest);
