@@ -5,6 +5,7 @@ import com.coolab.demo.business.requests.CreateEventRequest;
 import com.coolab.demo.business.requests.UpdateEventRequest;
 import com.coolab.demo.business.response.GetAllEventsResponse;
 import com.coolab.demo.business.rules.EventBusinessRules;
+import com.coolab.demo.common.StatusType;
 import com.coolab.demo.core.mappers.ModelMapperService;
 import com.coolab.demo.core.utilities.EventImageUtil;
 import com.coolab.demo.dataAcces.abstracts.EventRepository;
@@ -38,7 +39,7 @@ public class EventManager implements EventService {
     @Override
     public List<GetAllEventsResponse> getEvents() {
 
-        List<Events> eventsList = eventRepository.findAll();
+        List<Events> eventsList = eventRepository.findAllByStatus(StatusType.valueOf("a"));
 
         List<GetAllEventsResponse> getAllEventsResponses = eventsList.stream().map(
                 event -> modelMapperService.forResponse().map(event, GetAllEventsResponse.class)).collect(Collectors.toList());
