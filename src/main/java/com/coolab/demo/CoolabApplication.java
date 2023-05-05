@@ -3,7 +3,6 @@ package com.coolab.demo;
 import com.coolab.demo.core.exceptions.BusinessExceptions;
 import com.coolab.demo.core.exceptions.ExceptionDetails;
 import com.coolab.demo.core.exceptions.ValidationExceptionDetails;
-import org.jetbrains.annotations.NotNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 
 @SpringBootApplication

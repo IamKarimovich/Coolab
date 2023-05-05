@@ -5,14 +5,12 @@ import com.coolab.demo.business.requests.CreateEventRequest;
 import com.coolab.demo.business.requests.UpdateEventRequest;
 import com.coolab.demo.business.response.GetAllEventsResponse;
 import com.coolab.demo.common.EventTypeEnum;
-import com.coolab.demo.entities.concretes.Events;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -20,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/events/",consumes = MediaType.ALL_VALUE)
+@RequestMapping(value = "/api/events/")
 public class EventsController {
 
     private EventService eventService;
