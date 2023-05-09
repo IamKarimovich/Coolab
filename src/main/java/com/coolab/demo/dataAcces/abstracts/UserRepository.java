@@ -6,11 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer> {
 
     @Query("select u from User u where u.email = ?1")
-    User findUserByEmail(String email);
+    Optional<User> findUserByEmail(String email);
 
 
 
@@ -19,4 +21,8 @@ public interface UserRepository extends JpaRepository<User,Integer> {
 
     @Query("select (count(u) > 0) from User u where u.email = ?1 and u.password = ?2")
     boolean existsUserByEmailAndPassword(String email, String password);
+
+
+
+
 }

@@ -8,6 +8,7 @@ import com.coolab.demo.business.response.GetAllUsersResponse;
 import com.coolab.demo.business.response.GetByIdResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -24,37 +25,43 @@ public class UserController {
         this.userService = userService;
     }
 
+    @PreAuthorize("hasRole(UserType.ADMIN.name())")
     @GetMapping("getuser/list")
     public List<GetAllUsersResponse> getUsersList()
     {
         return userService.getUsers();
     }
 
+    @PreAuthorize("hasRole(UserType.ADMIN.name())")
     @GetMapping("getuser/{id}")
     public GetByIdResponse getUserById(@PathVariable int id)
     {
         return userService.getUserById(id);
     }
 
+    @PreAuthorize("hasRole(UserType.USER.name())")
     @PostMapping("signup")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void createUser(@Valid @RequestBody CreateUserRequest userRequest)
+    public void Registration(@Valid @RequestBody CreateUserRequest userRequest)
     {
         userService.createUser(userRequest);
     }
 
+    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
     @GetMapping("login")
     public GetAllUsersResponse loginUser(@Valid @RequestBody LoginUserRequest loginUserRequest)
     {
         return userService.loginUser(loginUserRequest);
     }
 
+    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
     @PutMapping("update")
     public void updateUser(@RequestBody @Valid UpdateUserRequest userRequest)
     {
         userService.updateUser(userRequest);
     }
 
+    @PreAuthorize("hasRole(UserType.ADMIN.name())")
     @DeleteMapping("deleteuser/{id}")
     public void deleteUser(@PathVariable int id)
     {
