@@ -30,14 +30,14 @@ public class EventsController {
     }
 
 
-    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
+//    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
     @GetMapping("getevent/list")
     public List<GetAllEventsResponse> getAllEvents()
     {
         return eventService.getEvents();
     }
 
-    @PreAuthorize("hasRole(UserType.ADMIN.name())")
+//    @PreAuthorize("hasRole(UserType.ADMIN.name())")
     @PostMapping()
     @ResponseStatus(code = HttpStatus.CREATED)
     public void addEvent(
@@ -47,7 +47,7 @@ public class EventsController {
         eventService.addEvent(eventRequest);
     }
 
-    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
+//    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
     @GetMapping("getimage/{id}")
     public ResponseEntity<byte[]> getImage(@PathVariable int id) {
         byte[] image = eventService.getImage(id);
@@ -55,21 +55,21 @@ public class EventsController {
     }
 
 
-    @PreAuthorize("hasRole(UserType.ADMIN.name())")
+//    @PreAuthorize("hasRole(UserType.ADMIN.name())")
     @PutMapping()
     @ResponseStatus(value = HttpStatus.OK)
     public void updateEvent(@RequestBody @Valid UpdateEventRequest updateEventRequest) throws IOException {
         eventService.updateImage(updateEventRequest);
     }
 
-    @PreAuthorize("hasRole(UserType.ADMIN.name())")
+//    @PreAuthorize("hasRole(UserType.ADMIN.name())")
     @GetMapping("getentity/{id}")
     public GetAllEventsResponse getEvent(@PathVariable int id)
     {
         return eventService.getEvent(id);
     }
 
-    @PreAuthorize("hasRole(UserType.ADMIN.name())")
+//    @PreAuthorize("hasRole(UserType.ADMIN.name())")
     @DeleteMapping("delete/{id}")
     public void deleteUser(@PathVariable int id)
     {
