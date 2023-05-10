@@ -20,7 +20,7 @@ public class GetAllEventsResponse {
 
     private EventTypeEnum eventType;
 
-    private Date dateTime;
+    private String dateTime;
 
     private String link;
 
