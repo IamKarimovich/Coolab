@@ -10,14 +10,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
 @NoArgsConstructor
 public class ModelMapperManager implements ModelMapperService{
 
 
         private ModelMapper modelMapper;
 
-        @Override
+        @Autowired
+        public ModelMapperManager(ModelMapper modelMapper) {
+            this.modelMapper = modelMapper;
+        }
+
+    @Override
         public ModelMapper forResponse() {
             this.modelMapper.getConfiguration()
                     .setAmbiguityIgnored(true)

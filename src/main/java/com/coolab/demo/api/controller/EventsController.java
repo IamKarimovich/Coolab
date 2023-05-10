@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -38,10 +38,10 @@ public class EventsController {
     }
 
 //    @PreAuthorize("hasRole(UserType.ADMIN.name())")
-    @PostMapping()
+    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
     @ResponseStatus(code = HttpStatus.CREATED)
     public void addEvent(
-            @RequestBody @Valid CreateEventRequest eventRequest
+            @ModelAttribute  @Valid CreateEventRequest eventRequest
                          ) throws IOException {
         System.out.println("Error");
         eventService.addEvent(eventRequest);

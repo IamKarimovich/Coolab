@@ -30,9 +30,7 @@ public class CreateEventRequest {
 
     private EventTypeEnum eventType;
 
-    @NotNull
-    @NotBlank
-    @NotEmpty
+
     private MultipartFile image;
 
     @NotNull
