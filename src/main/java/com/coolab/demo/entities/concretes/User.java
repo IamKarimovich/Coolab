@@ -7,8 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Table(name = "users")
 @Entity
@@ -37,7 +35,38 @@ public class User {
     @Column(name = "user_role")
     private UserType role;
 
+    public static class Builder {
 
+
+        private User user;
+
+
+
+        public Builder() {
+            user = new User();
+        }
+
+        public Builder withUsername(String username) {
+            user.email = username;
+            return this;
+        }
+
+        public Builder withFirstName(String firstName) {
+            user.name = firstName;
+            return this;
+        }
+
+        public Builder withLastName(String lastName) {
+            user.surname = lastName;
+            return this;
+        }
+
+
+
+        public User build() {
+            return user;
+        }
+    }
 
 
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
+@NoArgsConstructor
 public class ModelMapperManager implements ModelMapperService{
 
 

@@ -98,7 +98,7 @@ public class UserManager implements UserService {
     @Override
     public GetAllUsersResponse loginUser(LoginUserRequest loginUserRequest) {
         userBusinessRules.checkUserLoginIsCorrect(loginUserRequest);
-        User user = userRepository.findUserByEmail(loginUserRequest.getLogin());
+        Optional<User> user = userRepository.findUserByEmail(loginUserRequest.getLogin());
         GetAllUsersResponse usersResponse = modelMapperService.forResponse().map(user, GetAllUsersResponse.class);
         System.out.println(usersResponse.getUserRole().toString());
         return usersResponse;

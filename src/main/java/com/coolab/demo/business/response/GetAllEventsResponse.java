@@ -5,11 +5,6 @@ import com.coolab.demo.common.StatusType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.persistence.Column;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @AllArgsConstructor

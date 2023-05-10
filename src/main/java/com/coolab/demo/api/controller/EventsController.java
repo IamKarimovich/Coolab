@@ -5,14 +5,13 @@ import com.coolab.demo.business.requests.CreateEventRequest;
 import com.coolab.demo.business.requests.UpdateEventRequest;
 import com.coolab.demo.business.response.GetAllEventsResponse;
 import com.coolab.demo.common.EventTypeEnum;
-import com.coolab.demo.entities.concretes.Events;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/events/",consumes = MediaType.ALL_VALUE)
+@RequestMapping(value = "/api/events/")
 public class EventsController {
 
     private EventService eventService;
@@ -30,13 +29,15 @@ public class EventsController {
         this.eventService = eventService;
     }
 
-    
+
+    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
     @GetMapping("getevent/list")
     public List<GetAllEventsResponse> getAllEvents()
     {
         return eventService.getEvents();
     }
 
+    @PreAuthorize("hasRole(UserType.ADMIN.name())")
     @PostMapping()
     @ResponseStatus(code = HttpStatus.CREATED)
     public void addEvent(
@@ -46,6 +47,7 @@ public class EventsController {
         eventService.addEvent(eventRequest);
     }
 
+    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
     @GetMapping("getimage/{id}")
     public ResponseEntity<byte[]> getImage(@PathVariable int id) {
         byte[] image = eventService.getImage(id);
@@ -53,18 +55,21 @@ public class EventsController {
     }
 
 
+    @PreAuthorize("hasRole(UserType.ADMIN.name())")
     @PutMapping()
     @ResponseStatus(value = HttpStatus.OK)
-    public void updateImage(@RequestBody @Valid UpdateEventRequest updateEventRequest) throws IOException {
+    public void updateEvent(@RequestBody @Valid UpdateEventRequest updateEventRequest) throws IOException {
         eventService.updateImage(updateEventRequest);
     }
 
+    @PreAuthorize("hasRole(UserType.ADMIN.name())")
     @GetMapping("getentity/{id}")
     public GetAllEventsResponse getEvent(@PathVariable int id)
     {
         return eventService.getEvent(id);
     }
 
+    @PreAuthorize("hasRole(UserType.ADMIN.name())")
     @DeleteMapping("delete/{id}")
     public void deleteUser(@PathVariable int id)
     {
