@@ -50,8 +50,14 @@ public class EventManager implements EventService {
     @Override
     public void addEvent(CreateEventRequest eventRequest) {
 
-        Events event = modelMapperService.forRequest().map(eventRequest,Events.class);
 
+
+        Events event = modelMapperService.forRequest().map(eventRequest,Events.class);
+        try {
+            event.setImage(eventRequest.getImage().getBytes());
+        } catch (IOException e) {
+            System.out.println("error");
+        }
         eventRepository.save(event);
     }
 
