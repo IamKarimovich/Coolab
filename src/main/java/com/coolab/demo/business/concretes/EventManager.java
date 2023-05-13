@@ -39,7 +39,7 @@ public class EventManager implements EventService {
     @Override
     public List<GetAllEventsResponse> getEvents() {
 
-        List<Events> eventsList = eventRepository.findAllByStatus(StatusType.valueOf("a"));
+        List<Events> eventsList = eventRepository.findAll();
 
         List<GetAllEventsResponse> getAllEventsResponses = eventsList.stream().map(
                 event -> modelMapperService.forResponse().map(event, GetAllEventsResponse.class)).collect(Collectors.toList());
