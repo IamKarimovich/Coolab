@@ -40,10 +40,10 @@ public class EventManager implements EventService {
     public List<GetAllEventsResponse> getEvents() {
 
         List<Events> eventsList = eventRepository.findAll();
+        List<GetAllEventsResponse> getAllEventsResponses;
 
-        List<GetAllEventsResponse> getAllEventsResponses = eventsList.stream().map(
+        getAllEventsResponses = eventsList.stream().map(
                 event -> modelMapperService.forResponse().map(event, GetAllEventsResponse.class)).collect(Collectors.toList());
-
         return getAllEventsResponses;
     }
 
