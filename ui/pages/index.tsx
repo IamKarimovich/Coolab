@@ -1,8 +1,27 @@
 import Header from '@/components/Header'
 import Navbar from '@/components/Navbar'
 import Section from '@/components/Section'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+
+interface Event {
+	id: number
+	name: string
+	description: string
+	eventType: string
+	dateTime: string
+	link: string
+}
 
 export default function Home() {
+	const [eventList, setEventList] = useState<Event[]>([])
+
+	useEffect(() => {
+		axios.get('/api/events/getevent/list').then((res) => {
+			setEventList(res.data)
+		})
+	}, [])
+
 	return (
 		<>
 			<Navbar
@@ -24,36 +43,22 @@ export default function Home() {
 					<thead>
 						<tr>
 							<th>Title</th>
+							<th>Description</th>
+							<th>Type</th>
 							<th>Date</th>
-							<th>Day</th>
-							<th>Location</th>
+							<th>Link</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>The Big Conference</td>
-							<td>30 Nov 2021</td>
-							<td>Tuesday</td>
-							<td>Baku</td>
-						</tr>
-						<tr>
-							<td>The Big Conference</td>
-							<td>30 Nov 2021</td>
-							<td>Tuesday</td>
-							<td>Baku</td>
-						</tr>
-						<tr>
-							<td>The Big Conference</td>
-							<td>30 Nov 2021</td>
-							<td>Tuesday</td>
-							<td>Baku</td>
-						</tr>
-						<tr>
-							<td>The Big Conference</td>
-							<td>30 Nov 2021</td>
-							<td>Tuesday</td>
-							<td>Baku</td>
-						</tr>
+						{eventList.map((i) => (
+							<tr>
+								<td>{i.name}</td>
+								<td>{i.description}</td>
+								<td>{i.eventType}</td>
+								<td>{i.dateTime}</td>
+								<td><a href={i.link}>Click</a></td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 			</Section>
@@ -89,10 +94,16 @@ export default function Home() {
 			<Section title="Contact">
 				<div className="col-md-12" id="contact-details">
 					<a href="mailto:ruslankerimov2021@gmail.com">
-						<i className="fa-solid fa-envelope"></i> ruslankerimov2021@gmail.com
+						<i className="fa-solid fa-envelope"></i>{' '}
+						ruslankerimov2021@gmail.com
 					</a>
-					<span><i className="fa-solid fa-phone"></i> +994551234567</span>
-					<span><i className="fa-solid fa-location-dot"></i> Baku, Azerbaijan</span>
+					<span>
+						<i className="fa-solid fa-phone"></i> +994551234567
+					</span>
+					<span>
+						<i className="fa-solid fa-location-dot"></i> Baku,
+						Azerbaijan
+					</span>
 				</div>
 			</Section>
 		</>
