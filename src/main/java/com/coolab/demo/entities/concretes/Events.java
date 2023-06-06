@@ -38,6 +38,7 @@ public class Events {
     @Column(name = "link")
     private String link;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private StatusType status;
 
