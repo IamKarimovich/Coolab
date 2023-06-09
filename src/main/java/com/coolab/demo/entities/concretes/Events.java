@@ -45,5 +45,4 @@ public class Events {
     @Lob
     @Column(name = "image")
     private byte[] image;
-
 }
