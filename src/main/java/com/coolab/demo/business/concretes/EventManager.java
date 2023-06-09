@@ -10,14 +10,14 @@ import com.coolab.demo.core.mappers.ModelMapperService;
 import com.coolab.demo.core.utilities.EventImageUtil;
 import com.coolab.demo.dataAcces.abstracts.EventRepository;
 import com.coolab.demo.entities.concretes.Events;
+import org.postgresql.util.PGobject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,12 +29,18 @@ public class EventManager implements EventService {
     private EventBusinessRules eventBusinessRules;
 
 
+    private JdbcTemplate jdbcTemplate;
+
     @Autowired
-    public EventManager(EventRepository eventRepository, ModelMapperService modelMapperService, EventBusinessRules eventBusinessRules) {
+    public EventManager(EventRepository eventRepository, ModelMapperService modelMapperService, EventBusinessRules eventBusinessRules, JdbcTemplate jdbcTemplate) {
         this.eventRepository = eventRepository;
         this.modelMapperService = modelMapperService;
         this.eventBusinessRules = eventBusinessRules;
+        this.jdbcTemplate = jdbcTemplate;
     }
+
+
+
 
     @Override
     public List<GetAllEventsResponse> getEvents() {
@@ -63,9 +69,11 @@ public class EventManager implements EventService {
 
     @Override
     public byte[] getImage(int id){
-        eventBusinessRules.ifEventIsExists(id);
-        Optional<Events> imageData = eventRepository.findById(id);
-        return EventImageUtil.decompressImage(imageData.get().getImage());
+          eventBusinessRules.ifEventIsExists(id);
+//        Optional<Events> imageData = eventRepository.findById(id);
+//        return EventImageUtil.decompressImage(imageData.get().getImage());
+        String sql = "SELECT lo_get(image) FROM events WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{id}, byte[].class);
     }
 
     @Override

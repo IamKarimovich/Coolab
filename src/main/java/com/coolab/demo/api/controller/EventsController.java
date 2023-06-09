@@ -49,9 +49,8 @@ public class EventsController {
 
 //    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
     @GetMapping("getimage/{id}")
-    public ResponseEntity<byte[]> getImage(@PathVariable int id) {
-        byte[] image = eventService.getImage(id);
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
+    public byte[] getImage(@PathVariable int id) {
+        return eventService.getImage(id);
     }
 
 
