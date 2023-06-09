@@ -59,7 +59,14 @@ export default function Admin() {
 				</div>
 				<div>
 					<label htmlFor="">Event type</label>
-					<input placeholder="Event type..." type="text" name="eventType" id="eventType" />
+					<select name="eventType" id="eventType">
+						<option value="tour">Tur</option>
+						<option value="conference">Konfrans</option>
+						<option value="seminar">Seminar</option>
+						<option value="course">Kurs</option>
+						<option value="workshop">Vorkşop</option>
+						<option value="charity">Xeyriyyə</option>
+					</select>
 				</div>
 				<div>
 					<label htmlFor="">Status</label>

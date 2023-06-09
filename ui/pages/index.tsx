@@ -1,3 +1,4 @@
+import EventSection from '@/components/EventSection'
 import Header from '@/components/Header'
 import Navbar from '@/components/Navbar'
 import Section from '@/components/Section'
@@ -38,30 +39,13 @@ export default function Home() {
 				description="More Than Just a Theater"
 			/>
 
-			<Section title="Events">
-				<table className="table">
-					<thead>
-						<tr>
-							<th>Title</th>
-							<th>Description</th>
-							<th>Type</th>
-							<th>Date</th>
-							<th>Link</th>
-						</tr>
-					</thead>
-					<tbody>
-						{eventList.map((i) => (
-							<tr>
-								<td>{i.name}</td>
-								<td>{i.description}</td>
-								<td>{i.eventType}</td>
-								<td>{i.dateTime}</td>
-								<td><a href={i.link}>Click</a></td>
-							</tr>
-						))}
-					</tbody>
-				</table>
-			</Section>
+			<EventSection name='Turlar' type='tour' eventList={eventList}/>
+			<EventSection name='Konfranslar' type='conference' eventList={eventList}/>
+			<EventSection name='Seminarlar' type='seminar' eventList={eventList}/>
+			<EventSection name='Kurslar' type='course' eventList={eventList}/>
+			<EventSection name='Vorkşoplar' type='workshop' eventList={eventList}/>
+			<EventSection name='Xeyriyyə' type='charity' eventList={eventList}/>
+
 			<Section title="About" background="#efefef">
 				<div className="row">
 					<div className="col-md-6">
