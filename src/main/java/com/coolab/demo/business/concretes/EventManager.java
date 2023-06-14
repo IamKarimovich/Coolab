@@ -5,12 +5,10 @@ import com.coolab.demo.business.requests.CreateEventRequest;
 import com.coolab.demo.business.requests.UpdateEventRequest;
 import com.coolab.demo.business.response.GetAllEventsResponse;
 import com.coolab.demo.business.rules.EventBusinessRules;
-import com.coolab.demo.common.StatusType;
 import com.coolab.demo.core.mappers.ModelMapperService;
 import com.coolab.demo.core.utilities.EventImageUtil;
 import com.coolab.demo.dataAcces.abstracts.EventRepository;
 import com.coolab.demo.entities.concretes.Events;
-import org.postgresql.util.PGobject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -38,7 +36,6 @@ public class EventManager implements EventService {
         this.eventBusinessRules = eventBusinessRules;
         this.jdbcTemplate = jdbcTemplate;
     }
-
 
 
 

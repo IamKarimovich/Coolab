@@ -23,8 +23,7 @@ public class GetAllEventsResponse {
     private String dateTime;
 
     private String link;
-
-//    private StatusType status;
+    private StatusType status;
 
 //    private byte[] image;
 

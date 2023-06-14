@@ -26,21 +26,21 @@ public class UserController {
     }
 
 //    @PreAuthorize("hasRole(UserType.ADMIN.name())")
-    @GetMapping("getuser/list")
+    @GetMapping("GET/user/list")
     public List<GetAllUsersResponse> getUsersList()
     {
         return userService.getUsers();
     }
 
 //    @PreAuthorize("hasRole(UserType.ADMIN.name())")
-    @GetMapping("getuser/{id}")
+    @GetMapping("GET/user/{id}")
     public GetByIdResponse getUserById(@PathVariable int id)
     {
         return userService.getUserById(id);
     }
 
 //    @PreAuthorize("hasRole(UserType.USER.name())")
-    @PostMapping("signup")
+    @PostMapping("POST/user/registration")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void Registration(@Valid @RequestBody CreateUserRequest userRequest)
     {
@@ -48,21 +48,21 @@ public class UserController {
     }
 
 //    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
-    @GetMapping("login")
+    @GetMapping("GET/login")
     public GetAllUsersResponse loginUser(@Valid @RequestBody LoginUserRequest loginUserRequest)
     {
         return userService.loginUser(loginUserRequest);
     }
 //
 //    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
-    @PutMapping("update")
+    @PutMapping("PUT/user/update")
     public void updateUser(@RequestBody @Valid UpdateUserRequest userRequest)
     {
         userService.updateUser(userRequest);
     }
 
 //    @PreAuthorize("hasRole(UserType.ADMIN.name())")
-    @DeleteMapping("deleteuser/{id}")
+    @DeleteMapping("DELETE/user/{id}")
     public void deleteUser(@PathVariable int id)
     {
         userService.deleteUser(id);
