@@ -20,7 +20,7 @@ const AdminWrapper: FC<any> = ({ children }) => {
 								</Link>
 							</li>
 							<li className="nav-item">
-								<Link href="/admin/create_event" legacyBehavior>
+								<Link href="/admin/modify_about_us" legacyBehavior>
 									<a className="nav-link">Modify About Us</a>
 								</Link>
 							</li>
