@@ -23,7 +23,7 @@ FROM adoptopenjdk:11-jre-hotspot
 WORKDIR /app
 
 # Copy the JAR file from the build stage to the final image
-COPY --from=build /app/target/Coolab-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/spring-boot-docker.jar app.jar
 
 # Expose the port on which your Spring Boot application listens
 EXPOSE 8080
