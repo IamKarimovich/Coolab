@@ -28,14 +28,14 @@ public class EventsController {
 
 
 //    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
-    @GetMapping("GET/events/list")
+    @GetMapping("/")
     public List<GetAllEventsResponse> getAllEvents()
     {
         return eventService.getEvents();
     }
 
 //    @PreAuthorize("hasRole(UserType.ADMIN.name())")
-    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE },value = "POST/event")
+    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE },value = "/")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void addEvent(
             @ModelAttribute  @Valid CreateEventRequest eventRequest
@@ -47,7 +47,7 @@ public class EventsController {
 
 
 //    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
-    @GetMapping("GET/image/{id}")
+    @RequestMapping(value="/{id}/image/", method = RequestMethod.GET,produces="image/jpeg")
     public byte[] getImage(@PathVariable int id) {
         return eventService.getImage(id);
     }
@@ -61,14 +61,14 @@ public class EventsController {
     }
 
 //    @PreAuthorize("hasRole(UserType.ADMIN.name())")
-    @GetMapping("GET/event/{id}")
+    @GetMapping("/{id}/")
     public GetAllEventsResponse getEvent(@PathVariable int id)
     {
         return eventService.getEvent(id);
     }
 
 //    @PreAuthorize("hasRole(UserType.ADMIN.name())")
-    @DeleteMapping("DELETE/event/{id}")
+    @DeleteMapping("/{id}/")
     public void deleteUser(@PathVariable int id)
     {
         eventService.deleteEvent(id);

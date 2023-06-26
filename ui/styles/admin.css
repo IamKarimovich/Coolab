@@ -1,30 +1,41 @@
-.admin-container {
-    display: flex;
+.admin-container .container {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 15px;
 }
 
-.create-event {
-	width: 50%;
-	padding: 20px;
-	box-sizing: border-box;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
+.admin-container .mt-4 {
+	margin-top: 1.5rem;
 }
 
-.create-event > div {
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 15px;
+.admin-container .table {
+	width: 100%;
+	margin-bottom: 1rem;
+	color: #212529;
+	border-collapse: collapse;
 }
 
-.create-event button {
-	background: var(--primary-color);
-	color: var(--primary-color-text);
-    padding: 5px 15px;
-    border:2px solid var(--primary-color);
-    transition: 0.3s all ease;
-}
-.create-event button:hover {
-    border-radius: 10px;
+.admin-container .table th,
+.admin-container .table td {
+	padding: 0.75rem;
+	vertical-align: top;
+	border: 1px solid #000;
 }
 
+.admin-container .table thead th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #000;
+}
+
+.admin-container .table tbody td {
+	background-color: #eee;
+}
+
+.admin-container .navbar {
+	margin-bottom: 1rem;
+	background-color: var(--primary-color);
+}
+
+.admin-container .nav-link {
+	color: #fff;
+}

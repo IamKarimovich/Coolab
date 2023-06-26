@@ -15,12 +15,12 @@ public class AboutUsTextController {
     public AboutUsTextController(AboutTextService textService) {
         this.textService = textService;
     }
-    @GetMapping("GET/aboutUsText")
+    @GetMapping("aboutUsText")
     public GetAboutTextResponse getTextService() {
         return textService.getText(1);
     }
 
-    @PostMapping("POST/aboutUsText")
+    @PostMapping("aboutUsText")
     public void setTextService(@RequestBody @Valid String text)
     {
         UpdateTextRequest textRequest = new UpdateTextRequest(1,text);

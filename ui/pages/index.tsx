@@ -18,7 +18,7 @@ export default function Home() {
 	const [eventList, setEventList] = useState<Event[]>([])
 
 	useEffect(() => {
-		axios.get('/api/events/getevent/list').then((res) => {
+		axios.get('/api/events/').then((res) => {
 			setEventList(res.data)
 		})
 	}, [])
