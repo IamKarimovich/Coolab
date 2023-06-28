@@ -1,25 +1,31 @@
 version: '3'
+
 services:
-  backend:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  app:
+    build: .
     ports:
       - 8080:8080
     depends_on:
       - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/coolabdemo
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: krmf0990
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: coolab-db
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=krmf0990
+      - POSTGRES_DB=coolabdemo
+
   frontend:
     build:
       context: ./ui
       dockerfile: Dockerfile
     ports:
       - 3000:3000
-  db:
-    image: 'postgres:13.1-alpine'
-    container_name: db
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=blabla123
-      - POSTGRES_DB=coolabdemo
