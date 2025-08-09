@@ -1,6 +1,6 @@
 package com.coolab.demo.api.controller;
 
-import com.coolab.demo.business.abstracts.EventService;
+import com.coolab.demo.business.abstracts.EventsService;
 import com.coolab.demo.business.requests.CreateEventRequest;
 import com.coolab.demo.business.requests.UpdateEventRequest;
 import com.coolab.demo.business.response.GetAllEventsResponse;
@@ -19,11 +19,11 @@ import java.util.List;
 @RequestMapping(value = "/api/events/")
 public class EventsController {
 
-    private EventService eventService;
+    private EventsService eventsService;
 
     @Autowired
-    public EventsController(EventService eventService) {
-        this.eventService = eventService;
+    public EventsController(EventsService eventsService) {
+        this.eventsService = eventsService;
     }
 
 
@@ -31,7 +31,7 @@ public class EventsController {
     @GetMapping("/")
     public List<GetAllEventsResponse> getAllEvents()
     {
-        return eventService.getEvents();
+        return eventsService.getEvents();
     }
 
 //    @PreAuthorize("hasRole(UserType.ADMIN.name())")
@@ -41,7 +41,7 @@ public class EventsController {
             @ModelAttribute  @Valid CreateEventRequest eventRequest
                          ) throws IOException {
         System.out.println("Error");
-        eventService.addEvent(eventRequest);
+        eventsService.addEvent(eventRequest);
     }
 
 
@@ -49,7 +49,7 @@ public class EventsController {
 //    @PreAuthorize("hasRole(UserType.USER.name()) or hasRole(UserType.ADMIN.name())")
     @RequestMapping(value="/{id}/image/", method = RequestMethod.GET,produces="image/jpeg")
     public byte[] getImage(@PathVariable int id) {
-        return eventService.getImage(id);
+        return eventsService.getImage(id);
     }
 
 
@@ -57,21 +57,21 @@ public class EventsController {
     @PutMapping()
     @ResponseStatus(value = HttpStatus.OK)
     public void updateEvent(@RequestBody @Valid UpdateEventRequest updateEventRequest) throws IOException {
-        eventService.updateImage(updateEventRequest);
+        eventsService.updateImage(updateEventRequest);
     }
 
 //    @PreAuthorize("hasRole(UserType.ADMIN.name())")
     @GetMapping("/{id}/")
     public GetAllEventsResponse getEvent(@PathVariable int id)
     {
-        return eventService.getEvent(id);
+        return eventsService.getEvent(id);
     }
 
 //    @PreAuthorize("hasRole(UserType.ADMIN.name())")
     @DeleteMapping("/{id}/")
     public void deleteUser(@PathVariable int id)
     {
-        eventService.deleteEvent(id);
+        eventsService.deleteEvent(id);
     }
 
 

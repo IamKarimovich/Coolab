@@ -1,6 +1,6 @@
 package com.coolab.demo.business.concretes;
 
-import com.coolab.demo.business.abstracts.EventService;
+import com.coolab.demo.business.abstracts.EventsService;
 import com.coolab.demo.business.requests.CreateEventRequest;
 import com.coolab.demo.business.requests.UpdateEventRequest;
 import com.coolab.demo.business.response.GetAllEventsResponse;
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class EventManager implements EventService {
+public class EventManager implements EventsService {
 
     private EventRepository eventRepository;
     private ModelMapperService modelMapperService;

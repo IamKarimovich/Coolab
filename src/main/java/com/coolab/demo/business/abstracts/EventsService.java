@@ -7,7 +7,7 @@ import com.coolab.demo.business.response.GetAllEventsResponse;
 import java.io.IOException;
 import java.util.List;
 
-public interface EventService {
+public interface EventsService {
 
     List<GetAllEventsResponse> getEvents();
 
