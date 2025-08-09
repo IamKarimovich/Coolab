@@ -1,14 +1,13 @@
 package com.coolab.demo.business.requests;
 
-import com.coolab.demo.common.EventTypeEnum;
-import com.coolab.demo.common.StatusType;
+import com.coolab.demo.constants.EventTypeEnum;
+import com.coolab.demo.constants.StatusType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 

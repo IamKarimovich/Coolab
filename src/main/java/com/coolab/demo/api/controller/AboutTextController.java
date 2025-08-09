@@ -9,10 +9,10 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/api/text/")
-public class AboutUsTextController {
+public class AboutTextController {
     private AboutTextService textService;
 
-    public AboutUsTextController(AboutTextService textService) {
+    public AboutTextController(AboutTextService textService) {
         this.textService = textService;
     }
     @GetMapping("aboutUsText")

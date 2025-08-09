@@ -1,7 +1,6 @@
 package com.coolab.demo.business.requests;
 
-import com.coolab.demo.common.UserType;
-import com.coolab.demo.entities.concretes.Role;
+import com.coolab.demo.constants.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

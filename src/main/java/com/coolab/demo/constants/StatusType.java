@@ -1,4 +1,4 @@
-package com.coolab.demo.common;
+package com.coolab.demo.constants;
 
 public enum StatusType {
     a,p

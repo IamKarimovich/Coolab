@@ -1,12 +1,9 @@
 package com.coolab.demo.business.response;
 
-import com.coolab.demo.common.EventTypeEnum;
-import com.coolab.demo.common.StatusType;
-import com.coolab.demo.common.UserType;
+import com.coolab.demo.constants.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @AllArgsConstructor
