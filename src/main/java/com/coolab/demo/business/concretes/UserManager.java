@@ -8,7 +8,7 @@ import com.coolab.demo.business.requests.UpdateUserRequest;
 import com.coolab.demo.business.response.GetAllUsersResponse;
 import com.coolab.demo.business.response.GetByIdResponse;
 import com.coolab.demo.business.rules.UserBusinessRules;
-import com.coolab.demo.common.UserType;
+import com.coolab.demo.constants.UserType;
 import com.coolab.demo.core.mappers.ModelMapperService;
 import com.coolab.demo.dataAcces.abstracts.RoleRepository;
 import com.coolab.demo.dataAcces.abstracts.UserRepository;

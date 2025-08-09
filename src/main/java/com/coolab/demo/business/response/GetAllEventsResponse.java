@@ -1,11 +1,10 @@
 package com.coolab.demo.business.response;
 
-import com.coolab.demo.common.EventTypeEnum;
-import com.coolab.demo.common.StatusType;
+import com.coolab.demo.constants.EventTypeEnum;
+import com.coolab.demo.constants.StatusType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor

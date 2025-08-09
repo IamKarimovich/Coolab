@@ -1,7 +1,7 @@
 package com.coolab.demo.entities.concretes;
 
 
-import com.coolab.demo.common.UserType;
+import com.coolab.demo.constants.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

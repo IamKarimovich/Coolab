@@ -1,15 +1,10 @@
 package com.coolab.demo.business.requests;
 
-import com.coolab.demo.common.UserType;
-import com.coolab.demo.entities.concretes.Role;
+import com.coolab.demo.constants.UserType;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
